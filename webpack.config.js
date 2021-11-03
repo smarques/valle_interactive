@@ -23,7 +23,29 @@ module.exports = {
       {
         test: /\.[jt]sx?$/,
         loader: "ts-loader"
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.svg$/,
+        use: ['@svgr/webpack'],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.mp4$/,
+        loader: 'url-loader',
+        options: {
+          mimetype: "video/mp4"
+        }
+    }
     ],
   },
 
@@ -45,6 +67,7 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
     alias: {
+      '@': path.join(__dirname, "src"),
       "@env": path.join(__dirname, "src", "@" + env)
     }
   }

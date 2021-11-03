@@ -1,3 +1,7 @@
 .rp-canvas {
-  background: #FFF;
+  background-color: #000;
+  border: 1px solid white;
+}
+.rp-controls{
+  display:none;
 }
