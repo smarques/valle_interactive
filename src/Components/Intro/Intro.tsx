@@ -14,7 +14,9 @@ export default function Intro() {
   };
   const cb = (mark) => {
     if(script.markerName == end){
+      try{
       keymap.unbind(keyz.RIGHT, startPlayback);
+      }catch(e){}
     }
   }
   useMarkerUpdate(cb);
@@ -26,7 +28,7 @@ export default function Intro() {
   });
   return (
       <section data-from-first={start} data-from-last={end}>
-        <img src={IntroScreen} />
+        <img className="full-layer" src={IntroScreen} />
       </section>
   );
 }
