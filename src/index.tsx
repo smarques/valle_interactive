@@ -11,27 +11,28 @@ import Question from "./Components/Question/Question"
 import Response from "./Components/Response/Response" 
 import Fail from "./Components/Video/Fail/Fail" 
 import Retry from "./Components/Retry/Retry" 
-import SoundTrack from "./Components/SoundTrack" 
+// import SoundTrack from "./Components/SoundTrack" 
 // resources
 // import controls from "@env/controls";
 import {script} from "./markers";
 import { processResponse } from "./paths";
 
 function Game() {
-  
+  const [ completed, setCompleted ] = useState(0);
   const [ score, setScore ] = useState({});
   const updateScore = (q,res) => {
-    console.log('score before update', score);
     if(q==0) {
       setScore({});
+      setCompleted(0);
       return;
     }
+    setCompleted(completed+1);
     setScore(processResponse(score, q, res));
   }
   return (
     <Player script={script} controls={null}>
-      <SoundTrack />
-      <DebugBar/>
+      {/* <SoundTrack /> */}
+      <DebugBar completed={completed} />
       <Intro/>
       <Partenza />
       <Semaforo2Semaforo fr="intro/trafficLight" to="q1"/>
@@ -39,9 +40,9 @@ function Game() {
       <Question number="1" updateFx={updateScore} />
       <Semaforo2Semaforo fr="q1/after" to="q2"/>
       <PauseAt time="q2" />
-      <Question number="2" updateFx={updateScore} />
-      {/* <Semaforo2Semaforo fr="q2/after" to="q3"/> */}
-      {/* <PauseAt time="q3" />
+      <Question number="2" updateFx={updateScore} /> 
+      <Semaforo2Semaforo fr="q2/after" to="q3"/>
+      <PauseAt time="q3" />
       <Question number="3" updateFx={updateScore} />
       <Semaforo2Semaforo fr="q3/after" to="q4"/>
       <PauseAt time="q4" />
@@ -64,8 +65,8 @@ function Game() {
       <Semaforo2Semaforo fr="q9/after" to="q10"/>
       <PauseAt time="q10" />
       <Question number="10" updateFx={updateScore} />
-      <PauseAt time="q10/after" /> */}
-       <PauseAt time="response" />
+      <Semaforo2Semaforo fr="q10/after" to="response"/>
+      <PauseAt time="response" />
       <Response score={score} updateFx={updateScore}/>
       <Fail />
       <PauseAt time="retry" />

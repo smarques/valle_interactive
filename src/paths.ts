@@ -1,3 +1,10 @@
+import {useState}  from "react";
+// export const useCompleted = () => {
+//   const totalQuestions = 10;
+//   const [ completed, setCompleted ] = useState(0);
+//   return [completed, setCompleted, totalQuestions ];
+// }
+
 const PATHS = {
   GRAFICA_PUBBLICITARIA: 'grafica_pubblicitaria',
   TECNICO_GRAFICA_E_COMUNICAZIONE: 'tecnico_grafica_e_comunicazione',
@@ -50,6 +57,7 @@ const RESPONSE_SPLITS = [
 ]
 
 export const processResponse = (state, question, response) => {
+  // setCompleted(state.completed.push(question));
   let newState = {...state};
   const responsePaths = RESPONSE_SPLITS[question-1];
   console.log('input', {...newState, question, response, responsePaths})

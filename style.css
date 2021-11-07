@@ -11,6 +11,9 @@
 .rp-canvas {
   background-color: #000;
   border: 1px solid white;
+  height: unset;
+  aspect-ratio: 16/9;
+  margin: 30px;
 }
 .rp-controls{
   display:none;
@@ -21,6 +24,7 @@ body{
   font-weight: 400;
   font-style: normal;
   font-size: 16px;
+  color: white;
 }
 
 
