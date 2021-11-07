@@ -25,6 +25,7 @@ app.use("/", async (req, res, next) => {
     "${location.protocol}//${location.hostname}:35729/livereload.js\">" +
     "<` + `/script>`);</script>";
   file = file.replace("</body>", lrBlurb + "</body>");
+  res.header("Feature-Policy", "autoplay 'self'")
   res.send(file);
 });
 
@@ -35,7 +36,7 @@ app.listen(port);
 const livereload = require("livereload");
 
 const lrHttpServer = livereload.createServer({
-  exts: ["html", "css", "png", "gif", "jpg", "svg"]
+  exts: ["html", "css", "png", "gif", "jpg", "svg", "mp3"]
 });
 lrHttpServer.watch(__dirname);
 

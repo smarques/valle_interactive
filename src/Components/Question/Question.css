@@ -26,6 +26,9 @@ h2{
   min-width:45%;
   font-size:66px;
 }
+h2.selected{
+  color: red;
+}
 .left{
   left: 0;
   padding-left:20px;

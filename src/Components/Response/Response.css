@@ -1,0 +1,25 @@
+.path{
+  width: 50%;
+  position: absolute;
+  top: 40%;
+  text-align: center;
+  left: 25%;
+  padding: 30px;
+}
+.description{
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  text-align: center;
+  left: 15%;
+  padding: 30px;
+}
+.win{
+  width: 40%;
+  position: absolute;
+  top: 100px;
+  text-align: center;
+  left: 30%;
+  padding: 30px;
+  font-size: 60px;
+}
