@@ -4,13 +4,15 @@ import './Response.css';
 import {usePlayer, useMarkerUpdate } from "liqvid";
 import { resetKeys } from "../../keys";
 import { useState } from "react";
-export default function (props) {
+
+export default function Response(props) {
   const start = "response";
   const end = "close";
   const [response, setResponse] = useState({
     color: "",
     path: "",
-    description:""
+    description:"",
+    qr:""
   });
   const { keymap, script, playback } = usePlayer();
   const startPlayback = (e: KeyboardEvent) => {
@@ -24,7 +26,9 @@ export default function (props) {
   }
   const cb = (mark) => {
     if(script.markerName == start){
-      setResponse(getResponse(props.score));
+      const r = getResponse(props.score);
+      console.log(r);
+      setResponse(r);
       bindKeys();
     }
     if(script.markerName == end){
@@ -32,6 +36,10 @@ export default function (props) {
     }
   }
   useMarkerUpdate(cb);
+  console.log(props.qr);
+  const getQr = (resQr) => {
+    return props.qr[resQr];
+  }
   return (
     <section data-from-first={start} data-from-last={end}>
       <div className="win">HAI VINTO!!</div>
@@ -39,7 +47,10 @@ export default function (props) {
       <div className="path" style={{
         backgroundColor: response.color,
       }}>{response.path}</div>
-      <div className="description">{response.description}</div>
+      {/* <div className="description">{response.description}</div> */}
+      {/* <img src={props.qr.grafica_pubblicitaria}></img> */}
+      <div classNamw="qr-info">Usa il QR per maggiori informazioni</div>
+      <img className="qr" src={getQr(response.qr)} />
     </section>
   );
 }

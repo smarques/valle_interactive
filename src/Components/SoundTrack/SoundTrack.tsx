@@ -24,7 +24,7 @@ export default function SoundTrack(props) {
     <div className="soundtrack" 
       onClick={props.soundControl.toggleSoundTrack}
     >
-      <FontAwesomeIcon icon={props.soundControl.soundPlaying? faVolumeMute : faVolumeUp } />
+      <FontAwesomeIcon icon={props.soundControl.soundPlaying? faVolumeUp : faVolumeMute } />
     </div>
   );
 }

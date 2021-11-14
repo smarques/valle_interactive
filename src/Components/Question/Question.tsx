@@ -30,7 +30,9 @@ export default function (props) {
       setStarted(false)
       return;
     }
+    props.playBeep();
     const timer = setTimeout(() => { 
+      props.playBeep();
       setTimeLeft(timeLeft-1);
     }, 1000);
 

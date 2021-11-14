@@ -6,6 +6,7 @@ import Intro from "./Components/Intro/Intro"
 import DebugBar from "./Components/DebugBar/DebugBar" 
 import PedalBar from "./Components/PedalBar/PedalBar" 
 import Partenza from "./Components/Video/Partenza/Partenza" 
+import Arrivo from "./Components/Video/Arrivo/Arrivo" 
 import PauseAt from "./Components/PauseAt" 
 import Semaforo2Semaforo from "./Components/Video/Semaforo2Semaforo/Semaforo2Semaforo" 
 import Question from "./Components/Question/Question" 
@@ -15,14 +16,23 @@ import Retry from "./Components/Retry/Retry"
 import {script} from "./markers";
 import { processResponse } from "./paths";
 import SoundTrackFile from './audio/SoundTrack.mp3';
+import Beep from './audio/beep.mp3';
 import useSound from 'use-sound';
+import grafica_pubblicitaria from './assets/QR/Grafica.png';
+import tecnico_grafica_e_comunicazione from './assets/QR/GraficaComunicazione.png';
+import grafica_multimediale from './assets/QR/AudiovisivoMultimediale.png';
+import tecnico_turistico from './assets/QR/EconomicoTurismo.png';
+import fotografia from './assets/QR/Fotografia.png';
 
 function Game() {
   const [ completed, setCompleted ] = useState(0);
   const [ score, setScore ] = useState({});
   const [ soundTrackState, setsoundTrackState ] = useState('STOPPED');
-  const [play, {sound}] = useSound(SoundTrackFile);
+  const [play, {sound}] = useSound(SoundTrackFile, {
+    loop: true
+  });
   const [soundPlaying, setSoundPlaying] = useState(false);
+  const [playBeep] = useSound(Beep);
   const toggleSoundTrack = () => {
     if(soundPlaying) {
       sound.pause();
@@ -31,6 +41,13 @@ function Game() {
       sound.play();
       setSoundPlaying(true);
     }
+  }
+  const QRs = {
+    grafica_pubblicitaria,
+    tecnico_grafica_e_comunicazione,
+    tecnico_turistico,
+    fotografia,
+    grafica_multimediale
   }
   const updateScore = (q,res) => {
     console.log("quiiii")
@@ -49,37 +66,37 @@ function Game() {
       <Intro/>
       <Partenza />
       <PauseAt time="q1" />
-      <Question number="1" updateFx={updateScore} />
+      <Question number="1" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q1/after" to="q2"/>
       <PauseAt time="q2" />
-      <Question number="2" updateFx={updateScore} /> 
+      <Question number="2" updateFx={updateScore} playBeep={playBeep} /> 
       <Semaforo2Semaforo fr="q2/after" to="q3"/>
       <PauseAt time="q3" />
-      <Question number="3" updateFx={updateScore} />
+      <Question number="3" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q3/after" to="q4"/>
       <PauseAt time="q4" />
-      <Question number="4" updateFx={updateScore} />
+      <Question number="4" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q4/after" to="q5"/>
       <PauseAt time="q5" />
-      <Question number="5" updateFx={updateScore} />
+      <Question number="5" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q5/after" to="q6"/>
       <PauseAt time="q6" />
-      <Question number="6" updateFx={updateScore} />
+      <Question number="6" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q6/after" to="q7"/>
       <PauseAt time="q7" />
-      <Question number="7" updateFx={updateScore} />
+      <Question number="7" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q7/after" to="q8"/>
       <PauseAt time="q8" />
-      <Question number="8" updateFx={updateScore} />
+      <Question number="8" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q8/after" to="q9"/>
       <PauseAt time="q9" />
-      <Question number="9" updateFx={updateScore} />
+      <Question number="9" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q9/after" to="q10"/>
       <PauseAt time="q10" />
-      <Question number="10" updateFx={updateScore} />
-      <Semaforo2Semaforo fr="q10/after" to="response"/>
+      <Question number="10" updateFx={updateScore} playBeep={playBeep} />
+      <Arrivo/>
       <PauseAt time="response" />
-      <Response score={score} updateFx={updateScore}/>
+      <Response score={score} updateFx={updateScore} qr={QRs} />
       <Fail />
       <PauseAt time="retry" />
       <Retry updateFx={updateScore} />

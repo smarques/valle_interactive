@@ -13,7 +13,7 @@
   border: 1px solid white;
   height: unset;
   aspect-ratio: 16/9;
-  margin: 30px;
+  margin: auto;
 }
 .rp-controls{
   display:none;

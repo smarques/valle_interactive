@@ -23,7 +23,7 @@ export const markers = [
   ["q9", "0:02"],
   ["q9/after", "0:05"],
   ["q10", "0:02"],
-  ["q10/after", "0:05"],
+  ["q10/after", "0:09"],
   ["response", "0:01"],
   ["fail", "0:05"],
   ["retry", "0:01"],
