@@ -6,4 +6,8 @@ section.debugBar {
   width:100%;
   padding:10px;
   display:flex;
+  justify-content: space-between;
+}
+.debugBar__progress{
+  display:flex;
 }

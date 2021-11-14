@@ -5,36 +5,36 @@ div.question{
   height: 100%;
   top: 0;
 }
-h1 {
+div.question h1 {
   text-align: center;
   margin: 10px auto;
   position:absolute;
 }
-h1.question{
+div.question h1.question{
   top: 50px;
   left: 5%;
   width: 90%;
 }
-h1.timer{
-  top: 90px;
+div.question h1.timer{
+  top: 190px;
   left: 5%;
   width: 90%;
 }
-h2{
+div.question h2{
   position: absolute;
   top:45%;
-  min-width:45%;
-  font-size:66px;
+  width:45%;
+  font-size:50px;
 }
-h2.selected{
+div.question h2.selected{
   color: red;
 }
-.left{
+div.question .left{
   left: 0;
   padding-left:20px;
   text-align: right;
 }
-.right{
+div.question .right{
   right: 0;
   padding-right:20px;
   text-align: left;

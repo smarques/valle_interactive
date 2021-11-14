@@ -11,15 +11,26 @@ import Question from "./Components/Question/Question"
 import Response from "./Components/Response/Response" 
 import Fail from "./Components/Video/Fail/Fail" 
 import Retry from "./Components/Retry/Retry" 
-// import SoundTrack from "./Components/SoundTrack" 
-// resources
-// import controls from "@env/controls";
 import {script} from "./markers";
 import { processResponse } from "./paths";
+import SoundTrackFile from './audio/SoundTrack.mp3';
+import useSound from 'use-sound';
 
 function Game() {
   const [ completed, setCompleted ] = useState(0);
   const [ score, setScore ] = useState({});
+  const [ soundTrackState, setsoundTrackState ] = useState('STOPPED');
+  const [play, {sound}] = useSound(SoundTrackFile);
+  const [soundPlaying, setSoundPlaying] = useState(false);
+  const toggleSoundTrack = () => {
+    if(soundPlaying) {
+      sound.pause();
+      setSoundPlaying(false);
+    } else {
+      sound.play();
+      setSoundPlaying(true);
+    }
+  }
   const updateScore = (q,res) => {
     if(q==0) {
       setScore({});
@@ -31,8 +42,7 @@ function Game() {
   }
   return (
     <Player script={script} controls={null}>
-      {/* <SoundTrack /> */}
-      <DebugBar completed={completed} />
+      <DebugBar completed={completed} soundControl={{toggleSoundTrack, soundPlaying}}  />
       <Intro/>
       <Partenza />
       <Semaforo2Semaforo fr="intro/trafficLight" to="q1"/>

@@ -45,7 +45,14 @@ module.exports = {
         options: {
           mimetype: "video/mp4"
         }
-    }
+      },
+      {
+        test: /\.mp3$/,
+        loader: 'url-loader',
+        options: {
+          mimetype: "audio/mp3"
+        }
+      }
     ],
   },
 
