@@ -9,7 +9,7 @@ export default function Intro() {
   const {keymap, script, playback} = usePlayer();
   const player = usePlayer();
   const start = "intro/";
-  const end = "intro/startRace";
+  const end = "q1";
   React.useEffect(() => {
     player.hub.on("canvasClick", () => false);
   }, []);

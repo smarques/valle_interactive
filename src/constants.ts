@@ -1,4 +1,5 @@
 export const keyz = {
-  LEFT : "s",
-  RIGHT: 'k'
+  LEFT : "a",
+  RIGHT: "c",
+  CENTER: "b"
 }

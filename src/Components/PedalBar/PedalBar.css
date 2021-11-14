@@ -1,0 +1,16 @@
+section.pedalBar {
+  color: white;
+  position:absolute;
+  z-index: 9999;
+  bottom: -1px;
+  height: 33px;
+  /* background-color: black;  */
+  width:100%;
+  padding:10px;
+  display:flex;
+  justify-content: space-between;
+}
+/* .debugBar__progress{
+  display:flex;
+  margin-left: 20px;
+} */

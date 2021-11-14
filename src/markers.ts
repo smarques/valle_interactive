@@ -3,8 +3,7 @@ import {Script} from "liqvid";
 
 export const markers = [
   ["intro/", "0:01"],
-  ["intro/startRace", "0:05"],
-  ["intro/trafficLight", "0:05"],
+  ["intro/startRace", "0:08"],
   ["q1", "0:02"],
   ["q1/after", "0:05"],
   ["q2", "0:02"],

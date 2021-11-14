@@ -2,7 +2,7 @@ section.debugBar {
   color: white;
   position:absolute;
   z-index: 9999;
-  background-color: black;
+  /* background-color: black; */
   width:100%;
   padding:10px;
   display:flex;
@@ -10,4 +10,5 @@ section.debugBar {
 }
 .debugBar__progress{
   display:flex;
+  margin-left: 20px;
 }

@@ -4,6 +4,7 @@ import {useState}  from "react";
 import {Player} from "liqvid";
 import Intro from "./Components/Intro/Intro" 
 import DebugBar from "./Components/DebugBar/DebugBar" 
+import PedalBar from "./Components/PedalBar/PedalBar" 
 import Partenza from "./Components/Video/Partenza/Partenza" 
 import PauseAt from "./Components/PauseAt" 
 import Semaforo2Semaforo from "./Components/Video/Semaforo2Semaforo/Semaforo2Semaforo" 
@@ -32,6 +33,7 @@ function Game() {
     }
   }
   const updateScore = (q,res) => {
+    console.log("quiiii")
     if(q==0) {
       setScore({});
       setCompleted(0);
@@ -43,9 +45,9 @@ function Game() {
   return (
     <Player script={script} controls={null}>
       <DebugBar completed={completed} soundControl={{toggleSoundTrack, soundPlaying}}  />
+      <PedalBar />
       <Intro/>
       <Partenza />
-      <Semaforo2Semaforo fr="intro/trafficLight" to="q1"/>
       <PauseAt time="q1" />
       <Question number="1" updateFx={updateScore} />
       <Semaforo2Semaforo fr="q1/after" to="q2"/>
