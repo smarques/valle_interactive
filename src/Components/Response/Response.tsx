@@ -36,7 +36,6 @@ export default function Response(props) {
     }
   }
   useMarkerUpdate(cb);
-  console.log(props.qr);
   const getQr = (resQr) => {
     return props.qr[resQr];
   }
@@ -49,7 +48,7 @@ export default function Response(props) {
       }}>{response.path}</div>
       {/* <div className="description">{response.description}</div> */}
       {/* <img src={props.qr.grafica_pubblicitaria}></img> */}
-      <div classNamw="qr-info">Usa il QR per maggiori informazioni</div>
+      <div className="qr-info">Usa il QR per maggiori informazioni</div>
       <img className="qr" src={getQr(response.qr)} />
     </section>
   );

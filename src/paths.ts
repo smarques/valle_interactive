@@ -60,7 +60,7 @@ export const processResponse = (state, question, response) => {
   // setCompleted(state.completed.push(question));
   let newState = {...state};
   const responsePaths = RESPONSE_SPLITS[question-1];
-  console.log('input', {...newState, question, response, responsePaths})
+  //console.log('input', {...newState, question, response, responsePaths})
   responsePaths[response].forEach(path => {
     if(newState[path]){
       newState[path] ++;
@@ -68,7 +68,7 @@ export const processResponse = (state, question, response) => {
       newState[path] = 1;
     }
   })
-  console.log({newState})
+  // console.log({newState})
   return newState;
 }
 

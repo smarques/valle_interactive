@@ -7,7 +7,7 @@ import { resetKeys } from "../../keys";
 import { domande } from "../../paths";
 
 export default function (props) {
-  const totalTime = 5;
+  const totalTime = 8;
   const first = `q${props.number}`
   const last = `q${props.number}/after`
   const { keymap, script, playback } = usePlayer();
@@ -15,72 +15,111 @@ export default function (props) {
   const [started, setStarted] = useState(false);
   const [ended, setEnded] = useState(false);
   const failTime = useMemo(() => script.parseStart('fail'), []);
+  const nextTime = useMemo(() => script.parseStart(last), []);
   const selected = useRef(null)
+  let hasStarted = false;
+  let timer = null;
+
   useEffect(() => {
     if(!started || ended){
+      console.log('z1')
       return;
     } 
     if(timeLeft==0){
-      //playback.play();
+      resettone();
       playback.seek(failTime);
       playback.play();
-      resetKeys(keymap);
-      // unbindKeys();
-      setTimeLeft(totalTime);
-      setStarted(false)
       return;
     }
+    // setTimeLeft(timeLeft-1);
     props.playBeep();
-    const timer = setTimeout(() => { 
-      props.playBeep();
+    setTimer();
+    return () => stopTimer();
+  },[started, timeLeft]);
+
+  const resettone = () =>{
+    console.log('resettone');
+    setStarted(false)
+    hasStarted=false;
+    setEnded(false)
+    stopTimer();
+    resetKeys(keymap);
+  }
+
+  // const tictoc = () => {
+  //   console.log('tictoc',{started, ended, timeLeft})
+  //   if(!hasStarted || ended){
+  //     console.log('z1')
+  //     return;
+  //   } 
+  //   if(timeLeft==0){
+  //     resettone();
+  //     playback.seek(failTime);
+  //     playback.play();
+  //     return;
+  //   }
+  //   setTimeLeft(timeLeft-1);
+  //   props.playBeep();
+  //   setTimer();
+  // }
+ 
+  const setTimer = () => {
+    timer = setTimeout(() => { 
       setTimeLeft(timeLeft-1);
     }, 1000);
-
-    return () => clearTimeout(timer);
-  },[started, timeLeft]);
- 
-
+  }
+  const stopTimer = () => {
+    try{
+      clearTimeout(timer);
+    } catch(e){}
+  }
   const res1 = function () {
     selected.current='left'
     props.updateFx(props.number, 0)
-    setStarted(false)
-    // unbindKeys();
-    resetKeys(keymap);
-    playback.play();
+    resettone();
+    setTimeout(()=>{
+      playback.seek(nextTime);
+      playback.play();
+      },300)
   }
 
   const res2 = function () {
-    console.log('res2');
     selected.current='right'
-    setStarted(false)
-    resetKeys(keymap);
     props.updateFx(props.number, 1)
+    resettone();
+    setTimeout(()=>{
+    playback.seek(nextTime);
     playback.play();
+    },300)
   }
 
   const bindKeys = () => {
-    console.log('q'+props.number+' binding');
     keymap.bind(keyz.RIGHT, res2);
     keymap.bind(keyz.LEFT, res1);
   }
 
   const cb = (mark) => {
     if(script.markerName == first){
-      selected.current=''
-      console.log('start', first);
+      console.log('qui');
+      setTimeLeft(totalTime);
+      selected.current='';
       setStarted(true);
+      // setEnded(false);
       bindKeys();
     }
-    if(script.markerName == last){
-      console.log('last', last);
-      setEnded(true);
-      // unbindKeys();
-      resetKeys(keymap);
-    }
+    // if(script.markerName == last){
+    //   // console.log('last', last);
+    //   // setStarted(false);
+    //   setEnded(true);
+    //   stopTimer();
+    //   // unbindKeys();
+    //   resetKeys(keymap);
+    // }
   }
   useMarkerUpdate(cb);
   const fontSize = () => {
-    const num = 40 + (timeLeft - totalTime) * -30;
+    let num = 40 + (timeLeft - totalTime) * -30;
+    if(num > 200){ num = 200;}
     return num + 'px';
   }
   return (

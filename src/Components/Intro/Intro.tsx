@@ -32,6 +32,7 @@ export default function Intro() {
   return (
       <section data-from-first={start} data-from-last={end}>
         <img className="full-layer" src={IntroScreen} />
+        <div className="intro-text">Premi il tasto "c" o il pedale di destra per cominciare</div>
       </section>
   );
 }

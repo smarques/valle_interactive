@@ -34,5 +34,5 @@ img.qr{
 	position: absolute;
 	width: 100%;
 	text-align: center;
-	top: alc(50% + 220px);
+	top: calc(50% + 220px);
 }

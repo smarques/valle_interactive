@@ -5,3 +5,13 @@
   top:0;
   left:0;
 }
+.intro-text {
+	position: absolute;
+	top: 50%;
+	text-align: center;
+	width: 100%;
+	font-size: 2.5rem;
+	color: white;
+	padding: 2% 15%;
+  background-color: #00000087;
+}

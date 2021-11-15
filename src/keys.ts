@@ -1,6 +1,6 @@
 import { keyz } from "./constants"
 export const resetKeys = (keymap)=>{
-  console.log("Resetting keys...")
+  // console.log("Resetting keys...")
   const keys = keymap.getKeys();
   keys.forEach((key)=>{
     if(key != keyz.CENTER){ 

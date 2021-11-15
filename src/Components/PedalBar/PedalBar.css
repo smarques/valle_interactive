@@ -3,14 +3,28 @@ section.pedalBar {
   position:absolute;
   z-index: 9999;
   bottom: -1px;
-  height: 33px;
-  /* background-color: black;  */
+  height: 70px;
+  background-color: #00000061;
   width:100%;
-  padding:10px;
+  padding:10px 20px;
   display:flex;
   justify-content: space-between;
+  font-size: max( 1rem, 12px );
 }
-/* .debugBar__progress{
-  display:flex;
-  margin-left: 20px;
-} */
+.command{
+    text-transform: uppercase;
+    width: 33%;
+    text-align: center;
+    /* border: 1px solid white; */
+}
+.command > div{
+  text-align: center;
+}
+.command__space{
+  color: #facc15;
+  position: absolute;
+  top: 42px;
+  width: 33%;
+}
+
+
