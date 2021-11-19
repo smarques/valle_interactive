@@ -124,10 +124,10 @@ export default function (props) {
     <div className="question" data-from-first={first} data-from-last={last}>
       <img className="full-layer" src={DomandaScreen} />
       <div className="full-layer full-height">
-        <h1 className="question">{domande[props.number-1].question}</h1>
+        <h1 className="question">{domande[props.lang][props.number-1].question}</h1>
         <h1 className="timer" style={{fontSize : fontSize()}}>{timeLeft}</h1>
-        <h2 className={`left ${selected.current == 'left'?'selected':''}`}>{domande[props.number-1].left}</h2>
-        <h2 className={`right ${selected.current == 'right'?'selected':''}`}>{domande[props.number-1].right}</h2>
+        <h2 className={`left ${selected.current == 'left'?'selected':''}`}>{domande[props.lang][props.number-1].left}</h2>
+        <h2 className={`right ${selected.current == 'right'?'selected':''}`}>{domande[props.lang][props.number-1].right}</h2>
       </div>
     </div>
   );

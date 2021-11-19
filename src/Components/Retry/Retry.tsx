@@ -38,6 +38,7 @@ export default function Intro(props) {
   return (
       <section data-from-first={start} data-from-last={end}>
         <img className="full-layer" src={retryImg} />
+        <div className="retry-msg">{props.lang == 'it'? 'Ritenta!' : 'Try Again!'}</div>
       </section>
   );
 }

@@ -13,7 +13,7 @@ export default function DebugBar(props) {
       <section className="debugBar" data-from-first="intro/">
         <div className="debugBar__progress">
           {[...Array(props.completed)].map((e, i) => <ProgressPoint color="red" key={i}/>)}
-          {[...Array(domande.length - props.completed)].map((e, i) => <ProgressPoint color="#ddd9d9" key={i+10}/>)}
+          {[...Array(domande[props.lang].length - props.completed)].map((e, i) => <ProgressPoint color="#ddd9d9" key={i+10}/>)}
         </div>
         <SoundTrack soundControl={props.soundControl} />
       </section>

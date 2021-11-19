@@ -27,6 +27,7 @@ import fotografia from './assets/QR/Fotografia.png';
 
 function Game() {
   const [ completed, setCompleted ] = useState(0);
+  const [ lang, setLang ] = useState('it');
   const [ score, setScore ] = useState({});
   const [ soundTrackState, setsoundTrackState ] = useState('STOPPED');
   const [play, {sound}] = useSound(SoundTrackFile, {
@@ -59,49 +60,54 @@ function Game() {
     setCompleted(completed+1);
     setScore(processResponse(score, q, res));
   }
+  const toggleLang = () => {
+    console.log('toggggle')
+    setLang(lang=='it'?'en':'it');
+  };
+
   return (
     <Player script={script} controls={null}>
-      <DebugBar completed={completed} soundControl={{toggleSoundTrack, soundPlaying}}  />
-      <PedalBar />
-      <Intro/>
+      <DebugBar  lang={lang} completed={completed} soundControl={{toggleSoundTrack, soundPlaying}}  />
+      <PedalBar lang={lang}/>
+      <Intro lang={lang} toggleLang={toggleLang}/>
       <Partenza />
       <PauseAt time="q1" />
-      <Question number="1" updateFx={updateScore} playBeep={playBeep} />
+      <Question lang={lang} number="1" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q1/after" to="q2"/>
       <PauseAt time="q2" />
-      <Question number="2" updateFx={updateScore} playBeep={playBeep} /> 
+      <Question lang={lang} number="2" updateFx={updateScore} playBeep={playBeep} /> 
       <Semaforo2Semaforo fr="q2/after" to="q3"/>
       <PauseAt time="q3" />
-      <Question number="3" updateFx={updateScore} playBeep={playBeep} />
+      <Question lang={lang} number="3" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q3/after" to="q4"/>
       <PauseAt time="q4" />
-      <Question number="4" updateFx={updateScore} playBeep={playBeep} />
+      <Question lang={lang} number="4" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q4/after" to="q5"/>
       <PauseAt time="q5" />
-      <Question number="5" updateFx={updateScore} playBeep={playBeep} />
+      <Question lang={lang} number="5" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q5/after" to="q6"/>
       <PauseAt time="q6" />
-      <Question number="6" updateFx={updateScore} playBeep={playBeep} />
+      <Question lang={lang} number="6" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q6/after" to="q7"/>
       <PauseAt time="q7" />
-      <Question number="7" updateFx={updateScore} playBeep={playBeep} />
+      <Question lang={lang} number="7" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q7/after" to="q8"/>
       <PauseAt time="q8" />
-      <Question number="8" updateFx={updateScore} playBeep={playBeep} />
+      <Question lang={lang} number="8" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q8/after" to="q9"/>
       <PauseAt time="q9" />
-      <Question number="9" updateFx={updateScore} playBeep={playBeep} />
+      <Question lang={lang} number="9" updateFx={updateScore} playBeep={playBeep} />
       <Semaforo2Semaforo fr="q9/after" to="q10"/>
       <PauseAt time="q10" />
-      <Question number="10" updateFx={updateScore} playBeep={playBeep} />
+      <Question lang={lang} number="10" updateFx={updateScore} playBeep={playBeep} />
       <Arrivo/>
       <PauseAt time="response" />
-      <Response score={score} updateFx={updateScore} qr={QRs} />
+      <Response lang={lang} score={score} updateFx={updateScore} qr={QRs} />
       <Fail />
       <PauseAt time="retry" />
-      <Retry updateFx={updateScore} />
+      <Retry lang={lang} updateFx={updateScore} />
       <PauseAt time="credits" />
-      <Credits />
+      <Credits lang={lang} />
     </Player>
   );
 }

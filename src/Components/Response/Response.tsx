@@ -26,7 +26,7 @@ export default function Response(props) {
   }
   const cb = (mark) => {
     if(script.markerName == start){
-      const r = getResponse(props.score);
+      const r = getResponse(props.score, props.lang);
       console.log(r);
       setResponse(r);
       bindKeys();
@@ -48,7 +48,7 @@ export default function Response(props) {
       }}>{response.path}</div>
       {/* <div className="description">{response.description}</div> */}
       {/* <img src={props.qr.grafica_pubblicitaria}></img> */}
-      <div className="qr-info">Usa il QR per maggiori informazioni</div>
+      <div className="qr-info">{props.lang=='it'? "Usa il QR per maggiori informazioni":"Use this QR code for further info."}</div>
       <img className="qr" src={getQr(response.qr)} />
     </section>
   );

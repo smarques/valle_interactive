@@ -5,7 +5,7 @@ import { keyz } from "../../constants"
 import IntroScreen from '../../assets/intro/01_SchermataInizialePress.png';
 import { resetKeys } from "../../keys";
 
-export default function Intro() {
+export default function Intro(props) {
   const {keymap, script, playback} = usePlayer();
   const player = usePlayer();
   const start = "intro/";
@@ -20,35 +20,32 @@ export default function Intro() {
   };
 
   const bindKeys = () => {
-    console.log('intro binding')
     keymap.bind(keyz.RIGHT, startPlayback);
+    keymap.bind(keyz.LEFT, props.toggleLang);
   }
 
   const cb = (mark) => {
-    console.log(mark);
-    console.log(script.markerName);
     if(script.markerName == start){
-      console.log('aaaazz')
       bindKeys();
     } 
     if(script.markerName == end){
-      console.log('zaxa')
       resetKeys(keymap);
     }
   }
   useMarkerUpdate(cb);
   React.useEffect(() => {
-    console.log('zz')
     keymap.bind(keyz.RIGHT, startPlayback);
+    keymap.bind(keyz.LEFT, props.toggleLang);
+
     return () => {
       resetKeys(keymap);
     };
   });
-
+  const startText = props.lang == 'it' ? "Premi il tasto \"c\" o il pedale di destra per cominciare": "Press \"c\" or use the right-hand pedal to start";
   return (
       <section data-from-first={start} data-from-last={end}>
         <img className="full-layer" src={IntroScreen} />
-        <div className="intro-text">Premi il tasto "c" o il pedale di destra per cominciare</div>
+        <div className="intro-text">{ startText }</div>
       </section>
   );
 }

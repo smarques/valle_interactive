@@ -1,0 +1,7 @@
+div.retry-msg{
+  position: absolute;
+  bottom: 20%;
+  text-align: center;
+  width: 100%;
+  font-size: 3rem;
+}
