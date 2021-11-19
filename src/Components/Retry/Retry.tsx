@@ -9,13 +9,19 @@ export default function Intro(props) {
   const {keymap, script, playback} = usePlayer();
   const start = "retry";
   const end = "close";
+  const creditsTime = React.useMemo(() => script.parseStart('credits'), []);
   const bindKeys = () => {
-    keymap.bind(keyz.LEFT, startPlayback);
+    keymap.bind(keyz.LEFT, startCredits);
     keymap.bind(keyz.RIGHT, startPlayback);
   }
-
+  const startCredits = (e: KeyboardEvent) => {
+    resetKeys(keymap);
+    props.updateFx(0,0);
+    // keymap.bind(keyz.LEFT, startPlayback);
+    // keymap.bind(keyz.RIGHT, startPlayback);
+    playback.seek(creditsTime);
+  };
   const startPlayback = (e: KeyboardEvent) => {
-    console.log('retry');
     resetKeys(keymap);
     props.updateFx(0,0);
     playback.seek(0);

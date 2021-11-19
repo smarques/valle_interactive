@@ -13,22 +13,38 @@ export default function Intro() {
   React.useEffect(() => {
     player.hub.on("canvasClick", () => false);
   }, []);
+
   const startPlayback = (e: KeyboardEvent) => {
     resetKeys(keymap);
     playback.play();
   };
+
+  const bindKeys = () => {
+    console.log('intro binding')
+    keymap.bind(keyz.RIGHT, startPlayback);
+  }
+
   const cb = (mark) => {
+    console.log(mark);
+    console.log(script.markerName);
+    if(script.markerName == start){
+      console.log('aaaazz')
+      bindKeys();
+    } 
     if(script.markerName == end){
+      console.log('zaxa')
       resetKeys(keymap);
     }
   }
   useMarkerUpdate(cb);
   React.useEffect(() => {
+    console.log('zz')
     keymap.bind(keyz.RIGHT, startPlayback);
     return () => {
       resetKeys(keymap);
     };
   });
+
   return (
       <section data-from-first={start} data-from-last={end}>
         <img className="full-layer" src={IntroScreen} />

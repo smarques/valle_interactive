@@ -10,6 +10,7 @@ import Arrivo from "./Components/Video/Arrivo/Arrivo"
 import PauseAt from "./Components/PauseAt" 
 import Semaforo2Semaforo from "./Components/Video/Semaforo2Semaforo/Semaforo2Semaforo" 
 import Question from "./Components/Question/Question" 
+import Credits from "./Components/Credits/Credits" 
 import Response from "./Components/Response/Response" 
 import Fail from "./Components/Video/Fail/Fail" 
 import Retry from "./Components/Retry/Retry" 
@@ -50,7 +51,6 @@ function Game() {
     grafica_multimediale
   }
   const updateScore = (q,res) => {
-    console.log("quiiii")
     if(q==0) {
       setScore({});
       setCompleted(0);
@@ -100,6 +100,8 @@ function Game() {
       <Fail />
       <PauseAt time="retry" />
       <Retry updateFx={updateScore} />
+      <PauseAt time="credits" />
+      <Credits />
     </Player>
   );
 }

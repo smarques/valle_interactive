@@ -22,7 +22,6 @@ export default function (props) {
 
   useEffect(() => {
     if(!started || ended){
-      console.log('z1')
       return;
     } 
     if(timeLeft==0){
@@ -38,7 +37,6 @@ export default function (props) {
   },[started, timeLeft]);
 
   const resettone = () =>{
-    console.log('resettone');
     setStarted(false)
     hasStarted=false;
     setEnded(false)
@@ -73,6 +71,7 @@ export default function (props) {
       clearTimeout(timer);
     } catch(e){}
   }
+  
   const res1 = function () {
     selected.current='left'
     props.updateFx(props.number, 0)
@@ -100,7 +99,6 @@ export default function (props) {
 
   const cb = (mark) => {
     if(script.markerName == first){
-      console.log('qui');
       setTimeLeft(totalTime);
       selected.current='';
       setStarted(true);
@@ -110,7 +108,7 @@ export default function (props) {
     // if(script.markerName == last){
     //   // console.log('last', last);
     //   // setStarted(false);
-    //   setEnded(true);
+    //   setEnded(true)
     //   stopTimer();
     //   // unbindKeys();
     //   resetKeys(keymap);
@@ -118,7 +116,7 @@ export default function (props) {
   }
   useMarkerUpdate(cb);
   const fontSize = () => {
-    let num = 40 + (timeLeft - totalTime) * -30;
+    let num = 40 + (timeLeft - totalTime) * -20;
     if(num > 200){ num = 200;}
     return num + 'px';
   }

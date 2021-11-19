@@ -1,0 +1,78 @@
+
+.full-layer{
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
+}
+.credits{
+	display: none;
+}
+.credits.active{
+	display: block;
+	position: absolute;
+	top: 56%;
+	line-height: 1.7rem;
+	text-align: center;
+	width: 100%;
+	font-size: 1rem;
+	color: white;
+	padding: 2% 15%;
+  background-color: #00000087;
+}
+@keyframes switch {
+	/* 0% { opacity: 0;filter: blur(20px); transform:scale(12)}
+	3% { opacity: 1;filter: blur(0); transform:scale(1)}
+	10% { opacity: 1;filter: blur(0); transform:scale(.9)}
+	13% { opacity: 0;filter: blur(10px); transform:scale(.1)} */
+	0% { opacity: 0;filter: blur(20px);transform:scale(12)}
+	2% { opacity: 1;filter: blur(0); transform:scale(1)}
+	8% { opacity: 1;filter: blur(0); transform:scale(1)}
+	15% { opacity: 0.1;filter: blur(10px); transform:scale(.1)}
+	70% { opacity: 0;filter: blur(20px); transform:scale(.1)}
+}
+
+.credits.active div {
+	position: fixed;
+	 margin: 2vh 0;
+	 opacity: 0; 
+	 left: 10vw;
+	 width: 80vw;
+	 animation: switch 110s linear infinite; 
+ }
+ .credits div.part2{
+	animation-delay: 10s;
+ }
+ .credits div.part3{
+	animation-delay: 20s;
+ }
+ .credits div.part4{
+	animation-delay: 30s;
+ }
+ .credits div.part5{
+	animation-delay: 40s;
+ }
+ .credits div.part6{
+	animation-delay: 50s;
+ }
+ .credits div.part7{
+	animation-delay: 60s;
+ }
+ .credits div.part8{
+	animation-delay: 70s;
+ }
+ .credits div.part9{
+	animation-delay: 80s;
+ }
+ .credits div.part10{
+	animation-delay: 90s;
+ }
+ .credits div.part11{
+	animation-delay: 100s;
+ }
+ .credits div span{
+	color: #fcd111;
+ }
+ .credits div span.red{
+	color: #ed0000;
+ }

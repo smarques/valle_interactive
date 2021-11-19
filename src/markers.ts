@@ -27,7 +27,9 @@ export const markers = [
   ["response", "0:01"],
   ["fail", "0:05"],
   ["retry", "0:01"],
-  ["close", "0:01"]
+  ["close", "0:01"],
+  ["credits", "0:02"],
+  ["end", "0:02"]
 ] as [string, string][];
 
 export const script = new Script(markers);
