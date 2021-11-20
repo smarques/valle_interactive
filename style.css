@@ -10,7 +10,7 @@
 
 .rp-canvas {
   background-color: #000;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   height: unset;
   aspect-ratio: 16/9;
   margin: auto;

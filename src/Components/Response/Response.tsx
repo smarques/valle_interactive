@@ -20,10 +20,12 @@ export default function Response(props) {
     props.updateFx(0,0);
     playback.seek(0);
   };
+  
   const bindKeys = () => {
     keymap.bind(keyz.LEFT, startPlayback);
     keymap.bind(keyz.RIGHT, startPlayback);
   }
+  
   const cb = (mark) => {
     if(script.markerName == start){
       const r = getResponse(props.score, props.lang);

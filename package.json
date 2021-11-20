@@ -26,7 +26,8 @@
     "webpack-cli": "^4.7.2"
   },
   "scripts": {
-    "start": "ts-node -T server.ts"
+    "start": "ts-node -T server.ts",
+    "start-prod": "NODE_ENV=production npm start"
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",

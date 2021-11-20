@@ -6,7 +6,7 @@ export default function PedalBar(props) {
           <div>a / {props.lang=='it'?"PEDALE SX":"LEFT PEDAL"}</div>
           <div className="command__space" data-from-first="intro/" data-from-last="intro/startRace">{props.lang=='it'?"ENGLISH VERSION":"VERSIONE ITALIANA"}</div>
           <div className="command__space" data-from-first="q1" data-from-last="response">{props.lang=='it'?"RISPOSTA SX":"LEFT-HAND ANSWER"}</div>
-          <div className="command__space" data-from-first="response" data-from-last="fail">CREDITS</div>
+          <div className="command__space" data-from-first="response" data-from-last="fail">{props.lang=='it'?"GIOCA ANCORA":"NEW GAME"}</div>
           <div className="command__space" data-from-first="retry" data-from-last="close">CREDITS</div>
           <div className="command__space" data-from-first="credits">{props.lang=='it'?"GIOCA ANCORA":"NEW GAME"}</div>
         </div>
