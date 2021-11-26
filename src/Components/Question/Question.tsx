@@ -7,7 +7,7 @@ import { resetKeys } from "../../keys";
 import { domande } from "../../paths";
 
 export default function (props) {
-  const totalTime = 8;
+  const totalTime = 8888;
   const first = `q${props.number}`
   const last = `q${props.number}/after`
   const { keymap, script, playback } = usePlayer();
