@@ -33,14 +33,20 @@ function Game() {
   const [play, {sound}] = useSound(SoundTrackFile, {
     loop: true
   });
+  const [soundStarted, setSoundStarted] = useState(false);
   const [soundPlaying, setSoundPlaying] = useState(false);
   const [playBeep] = useSound(Beep);
   const toggleSoundTrack = () => {
     if(soundPlaying) {
-      sound.pause();
+      sound.mute(true);
       setSoundPlaying(false);
     } else {
-      sound.play();
+      if(!soundStarted) {
+        sound.play();
+        setSoundStarted(true);
+      } else {
+        sound.mute(false);
+      }
       setSoundPlaying(true);
     }
   }
