@@ -25,7 +25,10 @@ import grafica_multimediale from './assets/QR/AudiovisivoMultimediale.png';
 import tecnico_turistico from './assets/QR/EconomicoTurismo.png';
 import fotografia from './assets/QR/Fotografia.png';
 import { Lines } from 'react-preloaders';
-
+try{
+const locOrientation = screen.orientation.lock;
+locOrientation('landscape');
+}catch(e){}
 function Game() {
   const [ completed, setCompleted ] = useState(0);
   const [ lang, setLang ] = useState('it');
